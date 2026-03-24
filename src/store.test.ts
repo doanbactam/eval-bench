@@ -138,4 +138,44 @@ describe("Store Operations", () => {
       expect(opusDebug!.success_rate).toBe(0);
     });
   });
+
+  describe("Edge Cases", () => {
+    test("handles zero values", () => {
+      const stmt = db.prepare(`
+        INSERT INTO tasks (task_type, model, duration_minutes, tool_calls, success, lang, repo_size, agent)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `);
+
+      stmt.run("debugging", "claude-sonnet-4-6", 0, 0, 0, "typescript", "small", "claude-code");
+
+      const tasks = db.query("SELECT * FROM tasks").all() as Array<{ duration_minutes: number; tool_calls: number }>;
+      expect(tasks[0].duration_minutes).toBe(0);
+      expect(tasks[0].tool_calls).toBe(0);
+    });
+
+    test("handles large numbers", () => {
+      const stmt = db.prepare(`
+        INSERT INTO tasks (task_type, model, duration_minutes, tool_calls, success, lang, repo_size, agent)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `);
+
+      stmt.run("debugging", "claude-sonnet-4-6", 999.99, 99999, 1, "typescript", "large", "claude-code");
+
+      const tasks = db.query("SELECT * FROM tasks").all() as Array<{ duration_minutes: number; tool_calls: number }>;
+      expect(tasks[0].duration_minutes).toBe(999.99);
+      expect(tasks[0].tool_calls).toBe(99999);
+    });
+
+    test("handles special characters in lang", () => {
+      const stmt = db.prepare(`
+        INSERT INTO tasks (task_type, model, duration_minutes, tool_calls, success, lang, repo_size, agent)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `);
+
+      stmt.run("debugging", "claude-sonnet-4-6", 5.0, 10, 1, "c++", "medium", "claude-code");
+
+      const tasks = db.query("SELECT * FROM tasks").all() as Array<{ lang: string }>;
+      expect(tasks[0].lang).toBe("c++");
+    });
+  });
 });
