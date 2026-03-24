@@ -1,0 +1,79 @@
+{
+  "exported_at": "2026-03-24T13:29:31.651Z",
+  "version": "0.1.0",
+  "total_tasks": 6,
+  "tasks": [
+    {
+      "id": 5,
+      "task_type": "debugging",
+      "model": "claude-sonnet-4-6",
+      "duration_minutes": 5.5,
+      "tool_calls": 10,
+      "success": 1,
+      "lang": "typescript",
+      "repo_size": "medium",
+      "agent": "claude-code",
+      "recorded_at": "2026-03-24 13:27:42"
+    },
+    {
+      "id": 6,
+      "task_type": "refactoring",
+      "model": "claude-opus-4-6",
+      "duration_minutes": 3,
+      "tool_calls": 5,
+      "success": 1,
+      "lang": "typescript",
+      "repo_size": "medium",
+      "agent": "claude-code",
+      "recorded_at": "2026-03-24 13:27:42"
+    },
+    {
+      "id": 3,
+      "task_type": "debugging",
+      "model": "claude-sonnet-4-6",
+      "duration_minutes": 5.5,
+      "tool_calls": 10,
+      "success": 1,
+      "lang": "typescript",
+      "repo_size": "medium",
+      "agent": "claude-code",
+      "recorded_at": "2026-03-24 13:26:44"
+    },
+    {
+      "id": 4,
+      "task_type": "refactoring",
+      "model": "claude-opus-4-6",
+      "duration_minutes": 3,
+      "tool_calls": 5,
+      "success": 1,
+      "lang": "typescript",
+      "repo_size": "medium",
+      "agent": "claude-code",
+      "recorded_at": "2026-03-24 13:26:44"
+    },
+    {
+      "id": 1,
+      "task_type": "debugging",
+      "model": "claude-sonnet-4-6",
+      "duration_minutes": 5.5,
+      "tool_calls": 10,
+      "success": 1,
+      "lang": "typescript",
+      "repo_size": "medium",
+      "agent": "claude-code",
+      "recorded_at": "2026-03-24 13:26:22"
+    },
+    {
+      "id": 2,
+      "task_type": "refactoring",
+      "model": "claude-opus-4-6",
+      "duration_minutes": 3,
+      "tool_calls": 5,
+      "success": 1,
+      "lang": "typescript",
+      "repo_size": "medium",
+      "agent": "claude-code",
+      "recorded_at": "2026-03-24 13:26:22"
+    }
+  ]
+}
