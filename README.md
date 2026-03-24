@@ -1,6 +1,6 @@
 # eval-bench
 
-Which AI model is actually best for YOUR codebase? Record real tasks. Compare models. Stop guessing.
+> Which AI model is actually best for YOUR codebase? Record real tasks. Compare models. Stop guessing.
 
 An MCP server that sits alongside your coding agent. It records task metadata — NOT code — and shows you which model performs best on YOUR specific task types.
 
