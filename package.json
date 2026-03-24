@@ -1,0 +1,29 @@
+{
+  "name": "eval-bench",
+  "version": "0.1.0",
+  "module": "src/index.tsx",
+  "type": "module",
+  "bin": {
+    "eval-bench": "./src/index.tsx"
+  },
+  "scripts": {
+    "start": "bun src/index.tsx",
+    "mcp": "bun src/mcp-server.ts",
+    "report": "bun src/index.tsx report",
+    "watch": "bun src/index.tsx watch",
+    "show-data": "bun src/index.tsx show-data"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "ink": "^6.8.0",
+    "react": "^19.2.4",
+    "zod": "^4.3.6"
+  }
+}
