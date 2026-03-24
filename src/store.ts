@@ -2,7 +2,10 @@ import { Database } from "bun:sqlite";
 import { mkdirSync, existsSync } from "fs";
 import { dirname } from "path";
 
-const DB_PATH = `${process.env.HOME}/.eval-bench/data.db`;
+// Lazy evaluation of DB_PATH for testability
+function getDbPath(): string {
+  return `${process.env.HOME}/.eval-bench/data.db`;
+}
 
 export type TaskType = "refactoring" | "debugging" | "docs" | "new_feature" | "test";
 export type RepoSize = "small" | "medium" | "large";
@@ -24,11 +27,12 @@ export interface TaskRecord extends Task {
 }
 
 function getDb(): Database {
-  const dir = dirname(DB_PATH);
+  const dbPath = getDbPath();
+  const dir = dirname(dbPath);
   if (!existsSync(dir)) {
     mkdirSync(dir, { recursive: true });
   }
-  const db = new Database(DB_PATH, { create: true });
+  const db = new Database(dbPath, { create: true });
   db.run(`
     CREATE TABLE IF NOT EXISTS tasks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
